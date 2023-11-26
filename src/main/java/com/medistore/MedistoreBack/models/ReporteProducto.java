@@ -1,11 +1,16 @@
 package com.medistore.MedistoreBack.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -27,6 +32,12 @@ public class ReporteProducto {
     @Column(name = "fechaReporte")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaReporte;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "reporteProducto")
+    private Set<Producto> Producto = new HashSet<>();
 
 }
 

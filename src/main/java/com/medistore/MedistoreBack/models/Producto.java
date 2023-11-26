@@ -40,4 +40,7 @@ public class Producto {
     @ManyToOne(fetch = FetchType.EAGER)
     private Pedido pedido;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ReporteProducto reporteProducto;
+
 }
