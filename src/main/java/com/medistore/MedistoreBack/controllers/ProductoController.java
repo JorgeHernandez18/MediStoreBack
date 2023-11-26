@@ -42,4 +42,6 @@ public class ProductoController {
             productoDao.updateProducto(producto, id);
         }
     }
+
+    
 }
