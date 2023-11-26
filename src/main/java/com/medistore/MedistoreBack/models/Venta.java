@@ -30,6 +30,9 @@ public class Venta {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "producto")
+    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "venta")
     private Set<Producto> Productos = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Usuario usuario;
 }

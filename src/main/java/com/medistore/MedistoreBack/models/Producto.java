@@ -36,4 +36,8 @@ public class Producto {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Venta venta;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Pedido pedido;
+
 }

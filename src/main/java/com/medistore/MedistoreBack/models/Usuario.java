@@ -1,7 +1,13 @@
 package com.medistore.MedistoreBack.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -28,4 +34,14 @@ public class Usuario {
     private String clave;
     @Column(name = "rol")
     private String rol;
+
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "usuario")
+    private Set<Venta> Venta = new HashSet<>();
+
+
+
 }
