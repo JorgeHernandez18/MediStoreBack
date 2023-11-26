@@ -45,7 +45,6 @@ public class ProductoDaoImp implements ProductoDao{
         }
     }
 
-
     @Override
     public void createProducto(Producto producto) {
         entityManager.merge(producto);
