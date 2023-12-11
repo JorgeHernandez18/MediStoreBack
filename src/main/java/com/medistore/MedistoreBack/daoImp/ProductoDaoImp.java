@@ -2,6 +2,7 @@ package com.medistore.MedistoreBack.daoImp;
 
 import java.util.List;
 
+import com.medistore.MedistoreBack.models.Lote;
 import com.medistore.MedistoreBack.models.Producto;
 import com.medistore.MedistoreBack.dao.ProductoDao;
 
@@ -52,6 +53,8 @@ public class ProductoDaoImp implements ProductoDao{
 
     @Override
     public void createProducto(Producto producto) {
+        Lote l = new Lote(producto.getLote());
+        producto.getLotes().add(l);
         entityManager.merge(producto);
     }
 

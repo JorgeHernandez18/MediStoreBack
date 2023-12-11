@@ -5,12 +5,15 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-@Data
+
 @Entity
 @Table(name="producto")
-
+@Data
 public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -29,12 +32,15 @@ public class Producto {
     private float precio;
     @Column(name = "formula")
     private String formula;
-    @Column (name = "dosis")
+    @Column(name = "dosis")
     private String dosis;
-    @Column (name = "marca")
+    @Column(name = "marca")
     private String marca;
-    @Column (name = "disponible")
+    @Column(name = "disponible")
     private boolean disponible;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "producto", cascade = CascadeType.ALL)
+    private Set<Lote> lotes = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Venta venta;
@@ -44,5 +50,7 @@ public class Producto {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private ReporteProducto reporteProducto;
+
+
 
 }
