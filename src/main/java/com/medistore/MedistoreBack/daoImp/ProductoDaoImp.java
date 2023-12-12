@@ -41,7 +41,7 @@ public class ProductoDaoImp implements ProductoDao{
     @Override
     public Producto getProducto(String nombreComercial) throws Exception {
         try {
-            String query = "FROM Producto WHERE nombreComercial = :nombreComercial";
+            String query = "FROM Producto WHERE nombre_comercial = :nombreComercial";
             Producto p = (Producto) entityManager.createQuery(query)
                     .setParameter("nombreComercial", nombreComercial)
                     .getSingleResult();
@@ -53,22 +53,27 @@ public class ProductoDaoImp implements ProductoDao{
 
     @Override
     public void createProducto(Producto producto) {
-        Lote l = new Lote(producto.getLote());
-        producto.getLotes().add(l);
         entityManager.merge(producto);
     }
 
     @Override
     public void updateProducto(Producto producto, int id) {
         Producto p = entityManager.find(Producto.class, id);
-        p.setNombreComercial(producto.getNombreComercial());
-        p.setLote(producto.getLote());
-        p.setFechaIngreso(producto.getFechaIngreso());
-        p.setFechaVencimiento(producto.getFechaVencimiento());
+        p.setNombre(producto.getNombre());
+        p.setFecha_creacion(producto.getFecha_creacion());
+        p.setUnidad(producto.getUnidad());
         p.setPrecio(producto.getPrecio());
-        p.setFormula(producto.getFormula());
-        p.setDosis(producto.getDosis());
-        p.setMarca(producto.getMarca());
-        p.setDisponible(producto.isDisponible());
+        p.setConcentracion(producto.getConcentracion());
+        p.setRegistro_invima(producto.getRegistro_invima());
+        p.setPrincipio_activo(producto.getPrincipio_activo());
+        p.setNombre_comercial(producto.getNombre_comercial());
+        p.setPresentacion_comercial(producto.getPresentacion_comercial());
+        entityManager.merge(p);
     }
+
+    @Override
+    public void deleteProducto(Producto producto) {
+        entityManager.remove(producto);
+    }
+
 }

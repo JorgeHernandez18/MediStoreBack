@@ -78,7 +78,9 @@ public class UsuarioDaoImp implements UsuarioDao{
         .getSingleResult();
 
         if(usuario != null){
-            if(usuarioAuth.getClave().contentEquals(usuario.getClave())){
+            if(usuarioAuth.getClave().contentEquals(usuario.getClave()) &&
+                usuarioAuth.getRol().contentEquals(usuario.getRol())
+            ){
                 return usuarioAuth;
             }
         }

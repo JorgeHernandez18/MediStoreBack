@@ -2,6 +2,7 @@ package com.medistore.MedistoreBack.dao;
 
 import java.util.List;
 
+import com.medistore.MedistoreBack.models.Lote;
 import com.medistore.MedistoreBack.models.Producto;
 public interface ProductoDao{
 
@@ -15,6 +16,6 @@ public interface ProductoDao{
 
     void updateProducto(Producto producto, int id);
 
-
+    void deleteProducto(Producto producto);
 
 }
