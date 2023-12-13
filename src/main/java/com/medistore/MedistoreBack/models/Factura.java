@@ -38,7 +38,7 @@ public class Factura {
     //@ToString.Exclude
     //@EqualsAndHashCode.Exclude
     //@JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "factura_producto", joinColumns = @JoinColumn(name = "factura_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "producto_id", referencedColumnName = "id")

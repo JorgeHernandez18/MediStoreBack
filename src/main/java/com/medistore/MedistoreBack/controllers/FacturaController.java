@@ -33,7 +33,7 @@ public class FacturaController {
                     "no puede ser creado nuevamente");
         }
         Set<Producto> productos = containerFactura.getProductos();
-        facturaDao.createFactura(f, productos);
+        facturaDao.createFactura(factura, productos);
         return ResponseEntity.ok("Factura creada con exito");
     }
 

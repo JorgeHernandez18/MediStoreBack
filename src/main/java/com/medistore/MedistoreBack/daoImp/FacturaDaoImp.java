@@ -50,6 +50,9 @@ public class FacturaDaoImp implements FacturaDao {
 
     @Override
     public void createFactura(Factura factura, Set<Producto> productos) {
+        for (Producto p : productos){
+            p.getFacturas().add(factura);
+        }
         factura.setProductos(productos);
         entityManager.merge(factura);
     }

@@ -63,6 +63,7 @@ public class LoteDaoImp implements LoteDao {
         l.setCantidad(lote.getCantidad());
         l.setFecha_vencimiento(lote.getFecha_vencimiento());
         l.setPrecio_compra_unidad(lote.getPrecio_compra_unidad());
+        l.setPrecio_venta_unidad(lote.getPrecio_venta_unidad());
         l.setProducto(lote.getProducto());
         entityManager.merge(l);
     }
