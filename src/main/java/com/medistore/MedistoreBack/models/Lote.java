@@ -29,6 +29,9 @@ public class Lote {
     @Column(name = "precio_compra_unidad")
     private double precio_compra_unidad;
 
+    @Column(name = "precio_venta_unidad")
+    private double precio_venta_unidad;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
     private Producto producto;

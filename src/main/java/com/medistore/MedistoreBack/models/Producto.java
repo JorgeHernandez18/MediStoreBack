@@ -22,13 +22,12 @@ public class Producto {
     private int id;
     @Column(name = "nombre")
     private String nombre;
+    //Fecha automatica del sistema, no se puede editar
     @Column(name = "fecha_creacion")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha_creacion;
     @Column(name = "unidad")
     private String unidad;
-    @Column(name = "precio")
-    private float precio;
     @Column(name = "concentracion")
     private String concentracion;
     @Column(name = "registro_invima")

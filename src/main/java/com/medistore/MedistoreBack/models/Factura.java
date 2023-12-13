@@ -33,7 +33,7 @@ public class Factura {
 
     @Column(name = "numero_factura")
     //Es el numero que expide el deposito
-    private long numero_factura;
+    private String numero_factura;
 
     //@ToString.Exclude
     //@EqualsAndHashCode.Exclude

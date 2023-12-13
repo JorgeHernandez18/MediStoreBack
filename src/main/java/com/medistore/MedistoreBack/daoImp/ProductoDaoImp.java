@@ -62,7 +62,6 @@ public class ProductoDaoImp implements ProductoDao{
         p.setNombre(producto.getNombre());
         p.setFecha_creacion(producto.getFecha_creacion());
         p.setUnidad(producto.getUnidad());
-        p.setPrecio(producto.getPrecio());
         p.setConcentracion(producto.getConcentracion());
         p.setRegistro_invima(producto.getRegistro_invima());
         p.setPrincipio_activo(producto.getPrincipio_activo());
