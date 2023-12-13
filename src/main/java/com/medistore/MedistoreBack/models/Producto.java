@@ -43,7 +43,7 @@ public class Producto {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "producto", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "producto", cascade ={ CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Lote> lotes = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -58,4 +58,6 @@ public class Producto {
     @ManyToOne(fetch = FetchType.EAGER)
     private ReporteProducto reporteProducto;
 
+    @ManyToMany(mappedBy = "productos")
+    private Set<Factura> facturas = new HashSet<>();
 }

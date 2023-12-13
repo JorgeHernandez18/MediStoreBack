@@ -3,6 +3,9 @@ package com.medistore.MedistoreBack.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="proveedor")
 @Data
@@ -23,4 +26,7 @@ public class Proveedor {
     private String telefono;
     @Column(name = "ciudad")
     private String ciudad;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "proveedor")
+    private Set<Factura> facturas = new HashSet<>();
 }
