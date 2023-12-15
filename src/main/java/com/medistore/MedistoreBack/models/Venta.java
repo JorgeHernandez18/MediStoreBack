@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,20 +19,19 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name= "producto")
-    private String producto;
-    @Column(name= "cantidad")
-    private String cantidad;
-    @Column(name= "lote")
-    private String lote;
-    @Column(name= "costo")
-    private float costo;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "venta")
-    private Set<Producto> Productos = new HashSet<>();
+    @Column(name = "fecha_venta")
+    private Date fecha_venta;
+
+    //@ToString.Exclude
+    //@EqualsAndHashCode.Exclude
+    //@JsonIgnore
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "venta")
+    private Set<Venta_Producto> venta_productos = new HashSet<>();
+
+    @OneToOne(mappedBy = "venta")
+    private Detalle_Venta detalle_venta;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;

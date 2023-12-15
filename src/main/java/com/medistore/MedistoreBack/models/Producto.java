@@ -45,8 +45,8 @@ public class Producto {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "producto", cascade ={ CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Lote> lotes = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Venta venta;
+    @OneToMany(mappedBy = "producto")
+    private Set<Venta_Producto> venta_producto;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Laboratorio laboratorio;
@@ -59,4 +59,13 @@ public class Producto {
 
     @ManyToMany(mappedBy = "productos")
     private Set<Factura> facturas = new HashSet<>();
+
+    private long obtenerCantidadProducto(Lote lote){
+        for(Lote l : lotes){
+            if(l.getNombreLote() == lote.getNombreLote()){
+                return l.getCantidad();
+            }
+        }
+        return -1;
+    }
 }

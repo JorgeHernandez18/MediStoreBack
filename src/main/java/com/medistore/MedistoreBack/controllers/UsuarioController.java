@@ -44,4 +44,17 @@ public class UsuarioController {
         }
         //Validar que al cambiar el correo no esté en otra cuenta
     }
+
+    @RequestMapping(value = "api/usuario/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteUsuario(@RequestBody Usuario usuario, @PathVariable int id) throws Exception {
+        Usuario u = usuarioDao.getUsuario(usuario.getCorreo()) ;
+        if(u.getRol().contentEquals("administrador")){
+            Usuario userDelete = usuarioDao.getUsuario(id);
+            if(userDelete != null){
+                usuarioDao.deleteUsuario(id);
+                return ResponseEntity.ok("Usuario eliminado con exito!");
+            }
+        }
+        return ResponseEntity.status(404).body("¡Usuario a eliminar no existente!");
+    }
 }

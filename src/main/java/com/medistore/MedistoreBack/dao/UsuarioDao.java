@@ -18,4 +18,6 @@ public interface UsuarioDao {
 
     Usuario obtenerUsuarioPorCredenciales(Usuario usuario);
 
+    void deleteUsuario(int id);
+
 }
